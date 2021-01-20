@@ -1,0 +1,67 @@
+{
+  "mail": [
+    {
+      "id": 1,
+      "sender": "aaa@example.com",
+      "recipient": ["zzz.zzz@example.com"],
+      "subject": "[HR-888] Notice of official announcement",
+      "withAttachment": false,
+      "date": "01/16/2021 00:20:00",
+      "content": "First Line\nSecond Line\nThird Line"
+    },
+    {
+      "id": 2,
+      "sender": "bbb.bbbb@example.com",
+      "recipient": ["yyy@example.com"],
+      "subject": "[web:333] \"Web Contact\"",
+      "withAttachment": false,
+      "date": "01/16/2021 00:10:00",
+      "content": "Sample content"
+    },
+    {
+      "id": 3,
+      "sender": "ccc@example.com",
+      "recipient": ["xxx@example.com", "yyy@example.com"],
+      "subject": "Happy New Year! Greetings for the New Year.",
+      "withAttachment": true,
+      "date": "01/16/2021 00:00:00",
+      "content": "Sample content"
+    },
+    {
+      "id": 4,
+      "sender": "ddd.dddd@example.com",
+      "recipient": ["vvv.vvv@example.com", "aaa@example.com"],
+      "subject": "[HR-887(Revised: Office Expansion Project Team)] Notice of Office Expansion",
+      "withAttachment": false,
+      "date": "01/01/2021 13:10:00",
+      "content": "Sample content"
+    },
+    {
+      "id": 6,
+      "sender": "fff.ffff@example.com",
+      "recipient": ["qqq.qqq@example.com"],
+      "subject": "[dev] Postfix 3.1.12/3.2.9/3.3.4/3.4.5",
+      "withAttachment": false,
+      "date": "01/01/2021 11:11:11",
+      "content": "Sample content"
+    },
+    {
+      "id": 5,
+      "sender": "eee@example.com",
+      "recipient": ["sss@example.com", "aaa@example.com", "bbb@example.com"],
+      "subject": "[Github] Logout page",
+      "withAttachment": false,
+      "date": "01/01/2021 09:00:00",
+      "content": "Sample content"
+    },
+    {
+      "id": 6,
+      "sender": "fff.ffff@example.com",
+      "recipient": ["qqq.qqq@example.com"],
+      "subject": "[dev] Postfix 3.1.12/3.2.9/3.3.4/3.4.5",
+      "withAttachment": false,
+      "date": "01/01/2021 11:11:11",
+      "content": "Sample content"
+    }
+  ]
+}
