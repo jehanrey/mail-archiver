@@ -3,6 +3,7 @@ import Recipients from './recipients'
 import Subject from './subject'
 import Label from './label'
 import DateRange from './date-range'
+import CardList from './card-list'
 
 export {
   ExpandingTable,
@@ -10,4 +11,5 @@ export {
   Subject,
   Label,
   DateRange,
+  CardList,
 }

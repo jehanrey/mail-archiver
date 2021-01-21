@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const LabelText = styled.div`
   color: #666666;
   font-weight: bold;
-  padding-bottom: 10px;
+  padding: 0 15px 10px 15px;
 
   span {
     font-size: 22px;

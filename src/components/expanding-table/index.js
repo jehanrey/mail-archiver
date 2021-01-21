@@ -4,20 +4,24 @@ import styled from 'styled-components'
 import { SortDirectionIcon } from 'icons'
 import ExpandingRow from './expanding-row'
 
-const TableWrapper = styled.table`
-  border-collapse: collapse;
-  table-layout: fixed;
-  width: 100%;
+const TableWrapper = styled.div`
+  padding: 0 15px;
 
-  thead > tr {
-    height: 40px;
-    background: #F5F5F5;
-    text-align: left;
-    color: #666666;
-  }
+  table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
 
-  th, td {
-    padding: 0 10px 0 10px;
+    thead > tr {
+      height: 40px;
+      background: #F5F5F5;
+      text-align: left;
+      color: #666666;
+    }
+
+    th, td {
+      padding: 0 10px 0 10px;
+    }
   }
 `
 
@@ -27,6 +31,8 @@ const ColumnHeader = styled.th`
   text-overflow: ellipsis;
   white-space: nowrap;
   cursor: pointer;
+  border-top: 1px solid #DEDEDE;
+  border-bottom: 1px solid #DEDEDE;
 
   img {
     height: 5px;
@@ -61,12 +67,16 @@ const Rows = ({
   columns,
   data,
   expandedContentKey,
+  sortColumn,
+  sortDirection,
 }) => data.map((row, index) => (
   <ExpandingRow
     key={`row-item-${index}`}
     expandedContentKey={expandedContentKey}
     columns={columns}
     rowData={row}
+    sortColumn={sortColumn}
+    sortDirection={sortDirection}
   />
 ))
 
@@ -79,21 +89,25 @@ const ExpandingTable = ({
   expandedContentKey,
 }) => (
   <TableWrapper>
-    <thead>
-      <Headers
-        columns={columns}
-        triggerSort={triggerSort}
-        sortColumn={sortColumn}
-        sortDirection={sortDirection}
-      />
-    </thead>
-    <tbody>
-      <Rows
-        columns={columns}
-        data={data}
-        expandedContentKey={expandedContentKey}
-      />
-    </tbody>
+    <table>
+      <thead>
+        <Headers
+          columns={columns}
+          triggerSort={triggerSort}
+          sortColumn={sortColumn}
+          sortDirection={sortDirection}
+        />
+      </thead>
+      <tbody>
+        <Rows
+          columns={columns}
+          data={data}
+          expandedContentKey={expandedContentKey}
+          sortColumn={sortColumn}
+          sortDirection={sortDirection}
+        />
+      </tbody>
+    </table>
   </TableWrapper>
 )
 

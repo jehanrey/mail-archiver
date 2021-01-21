@@ -5,7 +5,7 @@ import React, {
 import styled from 'styled-components'
 
 const TableRow = styled.tr`
-  cursor: pointer;
+  cursor: ${({ expands }) => expands ? 'pointer' : 'default'};
   border-bottom: ${({ expanded }) => expanded ? 'none' : '1px solid #DEDEDE'};
   height: 40px;
   color: #333333;
@@ -47,20 +47,24 @@ const ExpandingRow = ({
   expandedContentKey,
   columns,
   rowData,
+  sortColumn,
+  sortDirection,
 }) => {
   const [expanded, setExpanded] = useState(false)
+  const expands = !!expandedContentKey
 
   useEffect(() => {
     setExpanded(false)
-  }, [rowData])
+  }, [rowData, sortColumn, sortDirection])
 
-  const toggleExpand = () => setExpanded((prevState) => !prevState)
+  const toggleExpand = () => expands && setExpanded((prevState) => !prevState)
 
   return (
     <>
       <TableRow
         onClick={toggleExpand}
         expanded={expanded}
+        expands={expands}
       >
         {columns.map((column, index) => (
           <RowItem
@@ -71,11 +75,13 @@ const ExpandingRow = ({
           </RowItem>
         ))}
       </TableRow>
-      <Content expanded={expanded}>
-        <td colSpan={columns.length}>
-          {rowData[expandedContentKey]}
-        </td>
-      </Content>
+      {expands && (
+        <Content expanded={expanded}>
+          <td colSpan={columns.length}>
+            {rowData[expandedContentKey]}
+          </td>
+        </Content>
+      )}
     </>
   )
 }

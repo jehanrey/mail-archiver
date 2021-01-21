@@ -14,7 +14,7 @@ const InputWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin: 0 15px 20px 15px;
 
   .react-datepicker-wrapper {
     flex: 1;

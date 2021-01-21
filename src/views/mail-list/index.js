@@ -5,8 +5,9 @@ import React, {
 } from 'react'
 
 import { MailsContext } from 'contexts'
-import { ExpandingTable } from 'components'
+import { ExpandingTable, CardList } from 'components'
 import { mailListColumns } from './constants'
+import CardItem from './card-item'
 
 const whenLoading = (loading) => (
   loading && <div>Loader</div>
@@ -24,10 +25,10 @@ const MailList = () => {
     sortColumn,
     sortDirection,
   } = useContext(MailsContext)
-  const [largeScreen, setLargeScreen] = useState(window.innerWidth > 768)
+  const [largeScreen, setLargeScreen] = useState(window.innerWidth > 568)
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(min-width: 768px)')
+    const mediaQuery = window.matchMedia('(min-width: 568px)')
     mediaQuery.addEventListener('change', checkResolution)
     return () => mediaQuery.removeEventListener('change', checkResolution)
   }, [])
@@ -46,7 +47,16 @@ const MailList = () => {
             expandedContentKey='content'
           />
         ) : (
-          <div>Card View</div>
+          <CardList
+            columns={mailListColumns}
+            showHeader
+            data={displayMail}
+            triggerSort={triggerSort}
+            sortColumn={sortColumn}
+            sortDirection={sortDirection}
+            expandedContentKey='content'
+            cardComponent={CardItem}
+          />
         )
       }
     </div>

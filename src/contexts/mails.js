@@ -4,7 +4,6 @@ import React, {
   createContext,
 } from 'react'
 
-import { getMail } from 'services/mail'
 import { withinDateRange } from 'modules/utils'
 
 export const MailsContext = createContext()
@@ -20,24 +19,13 @@ export const MailsContextProvider = ({ children }) => {
   const [toDate, setToDate] = useState(null)
 
   useEffect(() => {
-    retrieveMail()
-  }, [])
-
-  useEffect(() => {
     setDisplayMail(mails)
+    //reset?
   }, [mails])
 
   useEffect(() => {
     filterAndSortMail()
   }, [sortColumn, sortDirection])
-
-  const retrieveMail = () => {
-    setLoading(true)
-    getMail()
-      .then(({ data }) => setMails(data))
-      .catch(() => setMails([]))
-      .finally(() => setLoading(false))
-  }
 
   const filterMailForDisplay = (dataSet) => {
     if (!!fromDate && !!toDate) {
@@ -87,6 +75,7 @@ export const MailsContextProvider = ({ children }) => {
         loading,
         setLoading,
         mails,
+        setMails,
         displayMail,
         sortColumn,
         sortDirection,
