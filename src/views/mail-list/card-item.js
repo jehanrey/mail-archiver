@@ -96,6 +96,7 @@ const MailContent = styled.div`
   transition: height 0.3s linear, opacity 0.5s linear;
   color: #666666;
   font-size: 14px;
+  white-space: pre;
 `
 
 const CardItem = ({

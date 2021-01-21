@@ -46,6 +46,7 @@ const ColumnHeader = styled.th`
   cursor: pointer;
   border-top: 1px solid #DEDEDE;
   border-bottom: 1px solid #DEDEDE;
+  user-select: none;
 
   img {
     height: 5px;

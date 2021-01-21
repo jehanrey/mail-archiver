@@ -6,7 +6,12 @@ import React, {
 import styled from 'styled-components'
 
 import { MailsContext } from 'contexts'
-import { ExpandingTable, CardList } from 'components'
+import {
+  ExpandingTable,
+  CardList,
+  Loader,
+} from 'components'
+import { LogoIcon } from 'icons'
 import { mailListColumns } from './constants'
 import CardItem from './card-item'
 
@@ -15,12 +20,27 @@ const MailListWrapper = styled.div`
   overflow: hidden;
 `
 
-const whenLoading = (loading) => (
-  loading && <div>Loader</div>
+const StateWrapper = styled.div`
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    height: 125px;
+  }
+`
+
+const whenLoading = (loading) => loading && (
+  <StateWrapper>
+    <Loader />
+  </StateWrapper>
 )
 
-const whenEmpty = (data) => (
-  data.length < 1 && <div>Empty</div>
+const whenEmpty = (data) => data.length < 1 && (
+  <StateWrapper>
+    <img src={LogoIcon} alt="logo" />
+  </StateWrapper>
 )
 
 const MailList = () => {
@@ -43,7 +63,7 @@ const MailList = () => {
 
   return (
     <MailListWrapper>
-      {whenLoading(loading) || whenEmpty(displayMail) || largeScreen ? (
+      {whenLoading(loading) || whenEmpty(displayMail) || (largeScreen ? (
           <ExpandingTable
             columns={mailListColumns}
             data={displayMail}
@@ -63,8 +83,7 @@ const MailList = () => {
             expandedContentKey='content'
             cardComponent={CardItem}
           />
-        )
-      }
+      ))}
     </MailListWrapper>
   )
 }

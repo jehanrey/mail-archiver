@@ -20,6 +20,7 @@ const HeaderItem = styled.span`
   padding-left: 5px;
   padding-right: ${({ sorting }) => sorting ? '0' : '5px'};
   border-left: ${({ index }) => index === 0 ? '0' : '1px solid #666666'};
+  user-select: none;
   img {
     height: 5px;
     vertical-align: middle;

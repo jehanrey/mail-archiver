@@ -20,12 +20,20 @@ export const MailsContextProvider = ({ children }) => {
 
   useEffect(() => {
     setDisplayMail(mails)
-    //reset?
+    resetSortAndFilters()
   }, [mails])
 
   useEffect(() => {
     filterAndSortMail()
   }, [sortColumn, sortDirection])
+
+  const resetSortAndFilters = () => {
+    setSorterFn(() => () => {})
+    setSortColumn(null)
+    setSortDirection(null)
+    setFromDate(null)
+    setToDate(null)
+  }
 
   const filterMailForDisplay = (dataSet) => {
     if (!!fromDate && !!toDate) {
