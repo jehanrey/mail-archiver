@@ -120,7 +120,6 @@ const CardItem = ({
   return (
     <>
       <CardWrapper
-        key={`card-item-${index}`}
         expanded={expanded}
         onClick={() => setExpanded((prevState) => !prevState)}
       >

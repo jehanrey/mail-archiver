@@ -29,8 +29,8 @@ const HeaderItem = styled.span`
 `
 
 const ItemsWrapper = styled.div`
-  max-height: 77vh;
-  overflow: auto;
+  height: 77vh;
+  overflow-y: auto;
 `
 
 const CardList = ({
@@ -41,28 +41,38 @@ const CardList = ({
   sortColumn,
   sortDirection,
   cardComponent,
-}) => (
-  <div>
-    {showHeader && (
-      <HeaderWrapper>
-        {columns.map((column, index) => (
-          <HeaderItem
-            key={`list-header-${index}`}
+}) => {
+  const Card = cardComponent
+
+  return (
+    <div>
+      {showHeader && (
+        <HeaderWrapper>
+          {columns.map((column, index) => (
+            <HeaderItem
+              key={`list-header-${index}`}
+              index={index}
+              onClick={() => triggerSort(column)}
+              sortDirection={sortDirection}
+              sorting={sortColumn === column.key && !!sortDirection}
+            >
+              {column.title}
+              {sortColumn === column.key && !!sortDirection && <img src={SortDirectionIcon} alt="arrow"/>}
+            </HeaderItem>
+          ))}
+        </HeaderWrapper>
+      )}
+      <ItemsWrapper>
+        {data.map((item, index) => (
+          <Card
+            key={`card-item-${index}`}
+            item={item}
             index={index}
-            onClick={() => triggerSort(column)}
-            sortDirection={sortDirection}
-            sorting={sortColumn === column.key && !!sortDirection}
-          >
-            {column.title}
-            {sortColumn === column.key && !!sortDirection && <img src={SortDirectionIcon} alt="arrow"/>}
-          </HeaderItem>
+          />
         ))}
-      </HeaderWrapper>
-    )}
-    <ItemsWrapper>
-      {data.map((item, index) => cardComponent({ item, index }))}
-    </ItemsWrapper>
-  </div>
-)
+      </ItemsWrapper>
+    </div>
+  )
+}
 
 export default CardList

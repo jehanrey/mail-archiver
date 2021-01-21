@@ -17,6 +17,19 @@ const TableWrapper = styled.div`
       background: #F5F5F5;
       text-align: left;
       color: #666666;
+      width: 100%;
+      display: table;
+    }
+
+    tbody {
+      display: block;
+      overflow-y: auto;
+      height: 80vh;
+      tr {
+        width: 100%;
+        display: table;
+        table-layout: fixed;
+      }
     }
 
     th, td {

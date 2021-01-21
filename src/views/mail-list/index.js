@@ -3,11 +3,17 @@ import React, {
   useEffect,
   useContext,
 } from 'react'
+import styled from 'styled-components'
 
 import { MailsContext } from 'contexts'
 import { ExpandingTable, CardList } from 'components'
 import { mailListColumns } from './constants'
 import CardItem from './card-item'
+
+const MailListWrapper = styled.div`
+  height: 80vh;
+  overflow: hidden;
+`
 
 const whenLoading = (loading) => (
   loading && <div>Loader</div>
@@ -36,7 +42,7 @@ const MailList = () => {
   const checkResolution = (e) => setLargeScreen(e.matches)
 
   return (
-    <div>
+    <MailListWrapper>
       {whenLoading(loading) || whenEmpty(displayMail) || largeScreen ? (
           <ExpandingTable
             columns={mailListColumns}
@@ -59,7 +65,7 @@ const MailList = () => {
           />
         )
       }
-    </div>
+    </MailListWrapper>
   )
 }
 
