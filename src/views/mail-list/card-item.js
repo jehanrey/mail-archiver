@@ -99,10 +99,7 @@ const MailContent = styled.div`
   white-space: pre;
 `
 
-const CardItem = ({
-  item,
-  index,
-}) => {
+const CardItem = ({ item }) => {
   const {
     sender,
     recipient,

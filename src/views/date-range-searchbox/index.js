@@ -79,7 +79,7 @@ const DateRangeSearchBox = () => {
         <img src={SearchIcon} alt="search" />
       </button>
     </InputWrapper>
-)
+  )
 }
 
 export default DateRangeSearchBox

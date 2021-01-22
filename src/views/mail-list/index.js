@@ -25,6 +25,8 @@ const StateWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  border-top: 1px solid #DEDEDE;
+  margin: 0 15px;
 
   img {
     height: 125px;
